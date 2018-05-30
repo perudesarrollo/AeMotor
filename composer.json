@@ -1,0 +1,24 @@
+{
+  "name": "perudesarrollo/aemotor",
+  "description": "Estructura Motor",
+  "require": {
+    "php": ">=5.3.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4",
+    "friendsofphp/php-cs-fixer": "^2.12@dev"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Max Palomino",
+      "email": "maxpalominomendoza@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "perudesarrollo\\aemotor\\": "src/"
+    }
+  }
+}
