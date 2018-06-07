@@ -16,7 +16,8 @@ before_script:
   - make composer-install
 
 script:
-  - phpunit --configuration phpunit.xml.dist --coverage-text
+  - make ci
+  # - phpunit --configuration phpunit.xml.dist --coverage-text
 
 notifications:
   email: false
