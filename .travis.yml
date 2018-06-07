@@ -1,4 +1,6 @@
 language: php
+
+sudo: true
 php:
   - 7.0
 
@@ -6,8 +8,12 @@ services:
   - mongodb
 
 before_script:
-  #- source ./data/mongo-php-driver-installer.sh
-  - composer install
+  - phpenv config-rm xdebug.ini; echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini;
+  - pecl install -f mongodb-stable;
+  - composer self-update
+  - make composer-compat
+  - if [ "$DEPENDENCIES" = "beta" ]; then make composer-config-beta; fi;
+  - make composer-install
 
 script:
   - phpunit --configuration phpunit.xml.dist --coverage-text
