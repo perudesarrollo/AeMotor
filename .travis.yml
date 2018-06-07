@@ -1,9 +1,9 @@
 language: php
 php:
   - 7.0
-  - 7.1
 
 before_script:
+  - source ./data/mongo-php-driver-installer.sh
   - composer install
 
 script:
