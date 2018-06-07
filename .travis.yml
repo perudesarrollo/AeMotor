@@ -2,8 +2,11 @@ language: php
 php:
   - 7.0
 
+services:
+  - mongodb
+
 before_script:
-  - source ./data/mongo-php-driver-installer.sh
+  #- source ./data/mongo-php-driver-installer.sh
   - composer install
 
 script:
