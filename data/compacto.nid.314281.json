@@ -1,0 +1,164 @@
+{
+  "_id": 314281,
+  "app_opta": "0",
+  "autor": "",
+  "bajada": "<p>Esperemos que su ausencia nada tenga que ver con una lesi&oacute;n</p>\r\n",
+  "bajada_alt": "Esperemos que su ausencia nada tenga que ver con una lesi&oacute;n\r\n",
+  "categoria": {
+    "cid": "15",
+    "nombre": "Fútbol Mundial",
+    "url": "futbol-mundial"
+  },
+  "categoria_id": "15",
+  "cn_id": "1",
+  "comment_active": "1",
+  "comment_expire": "1.00",
+  "comment_moderar": "0",
+  "comment_modtime": 1521068400,
+  "contenido": "<p>&iexcl;Tremenda sorpresa! El delantero peruano<strong>&nbsp;<a href=\"http://www.americatv.com.pe/deportes/noticias-de-jefferson-farfan-126169\" target=\"_blank\">Jefferson Farf&aacute;n</a></strong> no apareci&oacute; en el segundo tiempo del duelo entre Lokomotiv y&nbsp;Atl&eacute;tico de Madrid, por la Europa League.</p>\n\n<p>Los hinchas del club ruso pon&iacute;an sus esperanzas en la &#39;Foquita&#39; para remontar el partido ante Atl&eacute;tico, sin embargo se dieron con la sorpresa que el peruano no apareci&oacute;. Su lugar fue tomado por <strong>Eder.</strong></p>\n\n<p><strong><span class=\"caps\">LEE</span> <span class=\"caps\">TAMBI</span>&Eacute;N ► <a href=\"http://www.americatv.com.pe/deportes/futbol-mundial/flamengo-reactivo-contrato-paolo-guerrero-y-espera-su-retorno-brasil-n314213?ref=hult\" target=\"_blank\">Flamengo reactiv&oacute; el contrato de Paolo Guerrero y lo espera en las pr&aacute;cticas</a></strong></p>\n\n<p>Esperemos que su ausencia nada tenga que ver con una lesi&oacute;n, m&aacute;s ahora que se acercan los partidos amistosos de la <strong>selecci&oacute;n peruana</strong> ante <strong>Croacia</strong> (23 de marzo) e <strong>Islandia</strong> (27).</p>\n\n<p>Antes del partido, el DT&nbsp;Yuri Siomin&nbsp;no quiso confirmar la presencia del jugador. Una lesi&oacute;n&nbsp;en el muslo de la pierna izquierda lo pon&iacute;a en duda. Ahora habr&aacute; que esperar que el club se pronuncie.</p>",
+  "created": "1521134897",
+  "created_publish": "1521135088",
+  "elementos": {
+    "451319": {
+      "fid": "451319",
+      "tipo": "imagen",
+      "src": "/ima/0/0/4/5/1/451319.jpg",
+      "path": "/ima/0/0/4/5/1",
+      "ext": "jpg",
+      "description": "Foto: AFP.",
+      "cover": null,
+      "thumb": "/ima/0/0/4/5/1/thumb/451319.jpg",
+      "url600": "http://player.ooyala.com/player/iphone/.m3u8",
+      "filepath": "http://e.deportes.americadigital.pe/ima/0/0/4/5/1/451319.jpg",
+      "tags": "",
+      "ooyala_meta": [],
+      "ooyala_imgs": null,
+      "noticia_tipo": "1"
+    }
+  },
+  "embed_a": "",
+  "embed_b": "",
+  "gid": "3",
+  "img": {
+    "url": "futbol-mundial-jefferson-farfan-no-aparecio-segundo-tiempo-duelo-ante-atletico-n314281",
+    "fid": "451319",
+    "ext": ".jpg",
+    "fid_ext": "451319.jpg",
+    "path": "futbol-mundial-jefferson-farfan-no-aparecio-segundo-tiempo-duelo-ante-atletico-n314281-%s-451319.jpg",
+    "path_fid_ext": "futbol-mundial-jefferson-farfan-no-aparecio-segundo-tiempo-duelo-ante-atletico-n314281-%s-%s.%s"
+  },
+  "is_hot": "0",
+  "modtime": "1521137125",
+  "nid": "314281",
+  "noprerolls": "0",
+  "nopublicidad": "0",
+  "origen": "",
+  "portada_e": {
+    "fid": "451319",
+    "tipo": "imagen",
+    "src": "/ima/0/0/4/5/1/451319.jpg",
+    "path": "/ima/0/0/4/5/1",
+    "ext": "jpg",
+    "description": "Foto: AFP.",
+    "cover": null,
+    "thumb": "/ima/0/0/4/5/1/thumb/451319.jpg",
+    "url600": "http://player.ooyala.com/player/iphone/.m3u8",
+    "filepath": "http://e.deportes.americadigital.pe/ima/0/0/4/5/1/451319.jpg",
+    "tags": "",
+    "ooyala_meta": [],
+    "ooyala_imgs": null,
+    "noticia_tipo": "1"
+  },
+  "programa": [],
+  "publicidad": "0",
+  "pubtime": "1521135088",
+  "puntuacion": {
+    "imglocal": false,
+    "imgvisitante": false
+  },
+  "red_social": "",
+  "relacionados": [],
+  "seccion": {
+    "pid": "4",
+    "nombre": "Deportes",
+    "cid": "15",
+    "url": "deportes",
+    "tema": {
+      "cid": "15",
+      "pid": "4",
+      "nombre": "Fútbol Mundial",
+      "tid": null,
+      "portada": "Deportes",
+      "url": "futbol-mundial"
+    }
+  },
+  "secciones": {
+    "4": {
+      "pid": "4",
+      "nombre": "Deportes",
+      "cid": "15",
+      "url": "deportes",
+      "tema": {
+        "cid": "15",
+        "pid": "4",
+        "nombre": "Fútbol Mundial",
+        "tid": null,
+        "portada": "Deportes",
+        "url": "futbol-mundial"
+      }
+    }
+  },
+  "style_e": 0,
+  "tags": [
+    {
+      "tid": "113686",
+      "name": "jefferson farfan",
+      "url": "/noticias-de-jefferson-farfan-113686",
+      "name_url": "jefferson-farfan"
+    },
+    {
+      "tid": "96528",
+      "name": "europa league",
+      "url": "/noticias-de-europa-league-96528",
+      "name_url": "europa-league"
+    },
+    {
+      "tid": "123912",
+      "name": "lokomotiv",
+      "url": "/noticias-de-lokomotiv-123912",
+      "name_url": "lokomotiv"
+    }
+  ],
+  "tags_especiales": null,
+  "tags_noticias": {
+    "96528": {
+      "tid": "96528",
+      "name": "europa league",
+      "url": "/noticias-de-europa-league-96528",
+      "name_url": "europa-league"
+    },
+    "113686": {
+      "tid": "113686",
+      "name": "jefferson farfan",
+      "url": "/noticias-de-jefferson-farfan-113686",
+      "name_url": "jefferson-farfan"
+    },
+    "123912": {
+      "tid": "123912",
+      "name": "lokomotiv",
+      "url": "/noticias-de-lokomotiv-123912",
+      "name_url": "lokomotiv"
+    }
+  },
+  "tags_personajes": [],
+  "tags_publicidad": [],
+  "tipo": "1",
+  "tipo_nota": "imagen",
+  "titulo": "Jefferson farfán no apareció en el segundo tiempo del duelo ante Atlético",
+  "titulo_alt": "Jefferson farfán no apareció en el segundo tiempo del duelo ante Atlético",
+  "url": "futbol-mundial/jefferson-farfan-no-aparecio-segundo-tiempo-duelo-ante-atletico-n314281",
+  "url_base": "jefferson-farfan-no-aparecio-segundo-tiempo-duelo-ante-atletico",
+  "urlexterna": null,
+  "volada": "",
+  "champions-league": false
+}

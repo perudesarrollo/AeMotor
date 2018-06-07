@@ -1,24 +1,22 @@
 {
-  "name": "perudesarrollo/aemotor",
-  "description": "Estructura Motor",
-  "require": {
-    "php": ">=5.3.3"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "4",
-    "friendsofphp/php-cs-fixer": "^2.12@dev"
-  },
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Max Palomino",
-      "email": "maxpalominomendoza@gmail.com"
-    }
-  ],
-  "minimum-stability": "dev",
-  "autoload": {
-    "psr-4": {
-      "perudesarrollo\\aemotor\\": "src/"
-    }
-  }
+    "name": "perudesarrollo/aemotor",
+    "description": "AE Motor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Max Palomino",
+            "email": "maxpalominomendoza@gmail.com"
+        }
+    ],
+    "require": {
+    	"mobiledetect/mobiledetectlib": "^2.8",
+    	"twig/twig": "^1.18",
+        "mongodb/mongodb": "^1.2.0",
+        "twig/extensions": "^1.5"
+    },
+    "autoload":{
+		"psr-4": {
+			"perudesarrollo\\AeMotor\\": "src"
+		}
+	}
 }
