@@ -3,17 +3,23 @@ language: php
 sudo: true
 php:
   - 7.0
+  - hhvm
 
 services:
   - mongodb
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
 before_script:
-  - phpenv config-rm xdebug.ini; echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini;
-  - pecl install -f mongodb-stable;
+  - if [ "$DEPENDENCIES" = "beta" ]; then composer config minimum-stability beta; fi;
+  - if [[ $TRAVIS_PHP_VERSION != hhvm ]]; then phpenv config-rm xdebug.ini; echo "memory_limit=2G" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini; fi;
+  - if [[ ${TRAVIS_PHP_VERSION:0:2} == "5." ]]; then yes '' | pecl -q install -f mongo-stable; fi
+  - if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then pecl install -f mongodb-stable; fi
+  - if [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then composer config "platform.ext-mongo" "1.6.16" && composer require alcaeus/mongo-php-adapter; fi
   - composer self-update
-  - make composer-compat
-  - if [ "$DEPENDENCIES" = "beta" ]; then make composer-config-beta; fi;
-  - make composer-install
+  - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script:
   - make ci
