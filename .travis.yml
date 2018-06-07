@@ -22,7 +22,7 @@ before_script:
   - composer update --prefer-dist --no-interaction $COMPOSER_FLAGS
 
 script:
-  - make ci
+  # - make ci
   # - phpunit --configuration phpunit.xml.dist --coverage-text
 
 notifications:
