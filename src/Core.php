@@ -2,7 +2,6 @@
 namespace perudesarrollo\AeMotor;
 
 use Mobile_Detect;
-use MongoDB\Client;
 
 class Core
 {
@@ -22,10 +21,15 @@ class Core
         $this->config       = $cnf;
         $this->mobileDetect = new Mobile_Detect();
         $this->cache        = new Memcache($this->config['cache']);
+
+        $redis = $this->redis();
+        $redis->set('welcome', 'joder');
+        print_r($redis->get('welcome'));
     }
 
-    public function ads($key = 'home.home', $no_mostrar_googleIma = false)
+    public function ads($key = 'home.home', $no_mostrar_publicidad = false, $no_mostrar_googleIma = false)
     {
+        if ($no_mostrar_publicidad) {return false;}
         $seccion = (array) $this->eplanning($key);
         $size    = (array) $this->eplanning('sizes');
 
@@ -229,7 +233,7 @@ class Core
     {
         try {
             $string = "mongodb://" . $this->config['mongodb']['host'] . ":" . $this->config['mongodb']['port'];
-            $mongo  = new Client($string, [], [
+            $mongo  = new \MongoDB\Client($string, [], [
                 'typeMap' => [
                     'array'    => 'array',
                     'document' => 'array',
@@ -240,6 +244,24 @@ class Core
             return $mongo;
         } catch (MongoDB\Driver\Exception\ConnectionTimeoutException $e) {
             throw new Exception('MongoDB: ' . $e->getMessage());
+        }
+    }
+
+    public function redis()
+    {
+        try {
+            \Predis\Autoloader::register();
+            $redis = new \Predis\Client([
+                'scheme' => 'tcp',
+                'host'   => $this->config['redis']['host'],
+                'port'   => $this->config['redis']['port'],
+            ], [
+                'prefix' => $this->config['redis']['prefix'],
+            ]);
+
+            return $redis;
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
         }
     }
 

@@ -72,7 +72,12 @@ $motor = [
     'mongodb' => [
         'host' => 'localhost',
         'port' => '27017',
-        'db'   => 'test',
+        'db'   => DB_MOTOR,
+    ],
+    'redis'   => [
+        'host'   => 'localhost',
+        'port'   => '6379',
+        'prefix' => DB_MOTOR . ':',
     ],
 ];
 
