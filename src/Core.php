@@ -11,8 +11,6 @@ class Core
 
     public $twig;
 
-    protected $cacheSegundos = 3600;
-
     protected $config;
 
     public function __construct($cnf = [])
@@ -190,7 +188,7 @@ class Core
         return $this->getCacheApi($key, CACHE_MASLEIDAS);
     }
 
-    public function getTagRow($w = [])
+    public function getTagRow($w = [], $tiempo = 3600)
     {
         if (!is_array($w)) {return false;}
         $cache_key = serialize($w);
@@ -198,7 +196,7 @@ class Core
         if (empty($cache)) {
             $cache = $this->mongodb()->{MDB_TAGS}->findOne($w);
             if (!empty($cache)) {
-                $this->cache->set($cache_key, $cache, $this->cacheSegundos);
+                $this->cache->set($cache_key, $cache, $tiempo);
             }
         }
         $this->_debug($cache_key, $cache, __FUNCTION__);
