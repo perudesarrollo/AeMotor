@@ -5,13 +5,17 @@ use Mobile_Detect;
 
 class Core
 {
-    protected $cache_segundos = 3600;
-    protected $config;
-
     public $cache;
+
     public $cache_key;
+
     public $debug;
+
     public $mobileDetect;
+
+    protected $cache_segundos = 3600;
+
+    protected $config;
 
     public function __construct($cnf = [])
     {
@@ -21,10 +25,6 @@ class Core
         $this->config       = $cnf;
         $this->mobileDetect = new Mobile_Detect();
         $this->cache        = new Memcache($this->config['cache']);
-
-        $redis = $this->redis();
-        $redis->set('welcome', 'joder');
-        print_r($redis->get('welcome'));
     }
 
     public function ads($key = 'home.home', $no_mostrar_publicidad = false, $no_mostrar_googleIma = false)
@@ -247,24 +247,6 @@ class Core
         }
     }
 
-    public function redis()
-    {
-        try {
-            \Predis\Autoloader::register();
-            $redis = new \Predis\Client([
-                'scheme' => 'tcp',
-                'host'   => $this->config['redis']['host'],
-                'port'   => $this->config['redis']['port'],
-            ], [
-                'prefix' => $this->config['redis']['prefix'],
-            ]);
-
-            return $redis;
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage());
-        }
-    }
-
     public function portada($key = 'home')
     {
         return $this->getCacheApi($key, CACHE_PORTADA);
@@ -347,6 +329,24 @@ class Core
         }
 
         return $tmp;
+    }
+
+    public function redis()
+    {
+        try {
+            \Predis\Autoloader::register();
+            $redis = new \Predis\Client([
+                'scheme' => 'tcp',
+                'host'   => $this->config['redis']['host'],
+                'port'   => $this->config['redis']['port'],
+            ], [
+                'prefix' => $this->config['redis']['prefix'],
+            ]);
+
+            return $redis;
+        } catch (\Predis\Network\ConnectionException $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 
     public function seo($key = 'home')

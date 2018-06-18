@@ -22,8 +22,14 @@ class Welcome extends MY_Controller
      */
     public function index()
     {
-        $this->motor->debug = true;
-        $cursor             = $this->motor->getCompacto(["_id" => 314281]);
+        $this->masleido->set(46162, 'actualidad', 123456, 3);
+        $redis = $this->motor->redis();
+        $redis->set('foo', 'bar');
+        $value = $redis->keys('*');
+        // $this->motor->debug = true;
+        print_r($value);
+        die();
+        $cursor = $this->motor->getCompacto(["_id" => 314281]);
         print_r($cursor);
 
         $this->load->view('welcome_message');

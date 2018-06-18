@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 define('DB_MOTOR', 'devAN');
+define('IMAGEN', 0);
+define('GALERIA', 2);
+define('VIDEO', 3);
+define('AUDIO', 4);
+define('GALERIA+VIDEO', 5);
+define('GALERIA+AUDIO', 6);
+define('VIDEO+AUDIO', 7);
 /*
 |--------------------------------------------------------------------------
 | Memcache Bloques
