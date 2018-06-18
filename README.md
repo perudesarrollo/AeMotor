@@ -81,6 +81,7 @@ $config['motor'] = $motor;
 ```php
 use perudesarrollo\AeMotor\Core;
 use perudesarrollo\AeMotor\Masleido;
+
 class MY_Controller extends CI_Controller
 {
     protected $motor;
@@ -89,9 +90,15 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         $this->load->config('motor');
-        $config         = $this->config->item('motor');
+        $config = $this->config->item('motor');
+
+        $config['twig']['views'] = APPPATH . 'views/';
+
         $this->motor    = new Core($config);
         $this->masleido = new Masleido($this->motor->redis());
     }
+
+    public function index() {}
+
 }
 ```
