@@ -13,10 +13,13 @@ class MY_Controller extends CI_Controller
         $this->load->config('motor');
         $config = $this->config->item('motor');
 
-        $config['twig']['views'] = APPPATH . 'views/';
+        $mobileDetect      = new Mobile_Detect();
+        $this->dispositivo = ($mobileDetect->isMobile()) ? 'mobil' : 'desktop';
+        // $config['twig']['views'] = $config['twig']['views'] . $this->dispositivo . '/';
 
-        $this->motor    = new Core($config);
-        $this->masleido = new Masleido($this->motor->redis());
+        $motor          = new Core($config);
+        $this->masleido = new Masleido($motor->redis());
+        $this->motor    = $motor;
     }
 
     public function index() {}

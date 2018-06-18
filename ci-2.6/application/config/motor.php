@@ -92,6 +92,14 @@ $motor = [
         'port'   => '6379',
         'prefix' => DB_MOTOR . ':',
     ],
+    'twig'    => [
+        'views' => APPPATH . 'views/',
+        'env'   => [
+            'debug'       => true,
+            'cache'       => '/var/tmp/ae',
+            'auto_reload' => true,
+        ],
+    ],
 ];
 
 $config['motor'] = $motor;
