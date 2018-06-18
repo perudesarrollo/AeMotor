@@ -27,12 +27,15 @@ class Welcome extends MY_Controller
         $redis->set('foo', 'bar');
         $value = $redis->keys('*');
         // $this->motor->debug = true;
-        print_r($value);
-        die();
+        // print_r($value);
+        // die();
         $cursor = $this->motor->getCompacto(["_id" => 314281]);
-        print_r($cursor);
-
-        $this->load->view('welcome_message');
+        // print_r($cursor);
+        $data['demo'] = [
+            1, 2, 3, 4, 5, 6, 7, 8,
+        ];
+        echo $this->motor->twig->render('welcome_message.html', $data);
+        // $this->load->view('welcome_message', $data);
     }
 }
 

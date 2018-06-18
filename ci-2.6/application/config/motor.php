@@ -1,5 +1,11 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+/*
+|--------------------------------------------------------------------------
+| Motor
+|--------------------------------------------------------------------------
+|
+ */
 define('DB_MOTOR', 'devAN');
 define('IMAGEN', 0);
 define('GALERIA', 2);

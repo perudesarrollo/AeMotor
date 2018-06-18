@@ -13,6 +13,8 @@ class Core
 
     public $mobileDetect;
 
+    public $twig;
+
     protected $cache_segundos = 3600;
 
     protected $config;
@@ -22,9 +24,22 @@ class Core
         if (!is_array($cnf)) {
             throw new Exception('Core Motor Library: empty config to array');
         }
+        $twig_views         = isset($cnf['twig']['views']) ? $cnf['twig']['views'] : null;
         $this->config       = $cnf;
         $this->mobileDetect = new Mobile_Detect();
         $this->cache        = new Memcache($this->config['cache']);
+
+        $loader     = new \Twig_Loader_Filesystem($twig_views);
+        $this->twig = new \Twig_Environment($loader, [
+            'debug' => true,
+            'cache' => '/var/tmp/an',
+            // 'auto_reload' => true,
+        ]);
+        $this->twig->addExtension(new \Twig_Extension_Optimizer(\Twig_NodeVisitor_Optimizer::OPTIMIZE_FOR));
+        $this->twig->addExtension(new \Twig_Extension_Debug());
+        $this->twig->addExtension(new \Twig_Extensions_Extension_Date());
+        $this->twig->addExtension(new Ayuda());
+        $this->twig->addExtension(new AyudaAmp());
     }
 
     public function ads($key = 'home.home', $no_mostrar_publicidad = false, $no_mostrar_googleIma = false)

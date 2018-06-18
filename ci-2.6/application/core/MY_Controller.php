@@ -11,7 +11,10 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         $this->load->config('motor');
-        $config         = $this->config->item('motor');
+        $config = $this->config->item('motor');
+
+        $config['twig']['views'] = APPPATH . 'views/';
+
         $this->motor    = new Core($config);
         $this->masleido = new Masleido($this->motor->redis());
     }
