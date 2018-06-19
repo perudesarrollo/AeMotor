@@ -161,7 +161,7 @@ class Core
         return $cache;
     }
 
-    public function getCompacto($w = null, $limit = 5, $offset = 0, $o = null)
+    public function getCompacto($w = null, $limit = 5, $offset = 0, $o = null, $coleccion = MDB_COMPACTO)
     {
         if ($this->debug) {
             echo "\nGet Compacto:: \n";
@@ -172,7 +172,7 @@ class Core
 
         if (!is_array($w)) {return false;}
 
-        $mongodb = $this->mongodb()->{MDB_COMPACTO};
+        $mongodb = $this->mongodb()->{$coleccion};
         $option  = [
             'skip'  => $offset,
             'limit' => (!empty($limit)) ? (int) $limit : null,
@@ -188,13 +188,13 @@ class Core
         return $this->getCacheApi($key, CACHE_MASLEIDAS);
     }
 
-    public function getTagRow($w = [], $tiempo = 3600)
+    public function getTagRow($w = [], $tiempo = 3600, $coleccion = MDB_TAGS)
     {
         if (!is_array($w)) {return false;}
         $cache_key = serialize($w);
         $cache     = $this->cache->get($cache_key);
         if (empty($cache)) {
-            $cache = $this->mongodb()->{MDB_TAGS}->findOne($w);
+            $cache = $this->mongodb()->{$coleccion}->findOne($w);
             if (!empty($cache)) {
                 $this->cache->set($cache_key, $cache, $tiempo);
             }
