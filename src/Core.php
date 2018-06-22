@@ -370,4 +370,18 @@ class Core
             print_r($data);
         }
     }
+
+    public function getCompactoNid($nid = 0, $tiempo = 3600, $coleccion = MDB_COMPACTO)
+    {
+        $cache_key = $nid;
+        $cache     = $this->cache->get($cache_key);
+        if (empty($cache)) {
+            $cache = $this->mongodb()->{$coleccion}->findOne(["_id" => $nid]);
+            if (!empty($cache)) {
+                $this->cache->set($cache_key, $cache, $tiempo);
+            }
+        }
+        $this->_debug($cache_key, $cache, __FUNCTION__);
+        return (array) $cache;
+    }
 }
