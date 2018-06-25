@@ -31,10 +31,10 @@ class Core
         $this->twig->addExtension(new AyudaAmp());
     }
 
-    public function ads($key = 'home', $seccion = '.home', $no_mostrar_googleIma = false, $no_mostrar_publicidad = false)
+    public function ads($key = 'home', $seccion = 'home', $no_mostrar_googleIma = false, $no_mostrar_publicidad = false)
     {
         if ($no_mostrar_publicidad) {return false;}
-        $seccion = (array) $this->eplanning($key . $seccion);
+        $seccion = (array) $this->eplanning($key . '.' . $seccion);
         $size    = (array) $this->eplanning('sizes');
 
         $size['movil_middle_banner_2'] = isset($size['movil_middle_banner_1']) ? $size['movil_middle_banner_1'] : null;
