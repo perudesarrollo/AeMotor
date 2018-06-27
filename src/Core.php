@@ -148,6 +148,38 @@ class Core
         return $out;
     }
 
+    public function dataLayer($seo = '')
+    {
+        $seo = (array) $seo;
+        if (!isset($seo['titulo'])) {return false;}
+        $out = [
+            "window"    => [
+                "title"       => $seo['titulo'],
+                "url"         => base_url($this->uri->uri_string()),
+                "description" => isset($seo['meta_description']) ? $seo['meta_description'] : null,
+                "keywords"    => isset($seo['meta_keywords']) ? $seo['meta_keywords'] : null,
+                "pub_time"    => date("Y-m-d H:i:s"),
+            ],
+            "referrers" => [
+                "referrer_url"    => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : base_url(),
+                "primaryReferrer" => null,
+                "subReferrer"     => null,
+                "browser"         => $this->agent->browser(),
+                "device"          => ($this->agent->is_mobile()) ? 'Movil' : 'Desktop',
+            ],
+            "actions"   => [],
+            "user"      => [],
+            "category"  => [
+                "primaryCategory" => 'Deportes',
+                "subCategory1"    => isset($seo['nombre_categoria']) ? $seo['nombre_categoria'] : 'Home',
+                "subCategory1_id" => isset($seo['id_categoria']) ? (int) $seo['id_categoria'] : '0',
+            ],
+        ];
+        $json = @json_encode($out);
+
+        return $json;
+    }
+
     public function eplanning($key = '')
     {
         return $this->getCacheApi($key, CACHE_EPLANNING);
@@ -217,10 +249,10 @@ class Core
         return (array) $cache;
     }
 
-    public function getTags($w = null, $limit = 1, $offset = 0)
+    public function getTags($w = null, $limit = 1, $offset = 0, $o = null, $coleccion = MDB_TAGS)
     {
         if (!is_array($w)) {return false;}
-        $mongodb = $this->mongodb()->{MDB_TAGS};
+        $mongodb = $this->mongodb()->{$coleccion};
         $option  = [
             'skip'  => $offset,
             'limit' => (!empty($limit)) ? (int) $limit : null,
@@ -234,6 +266,83 @@ class Core
         return $cursor;
     }
 
+    public function ldjson($nota = [], $relacionadas = [])
+    {
+        if (!is_array($nota)) {return false;}
+        $image = [];
+        $list  = [];
+
+        if (!empty($relacionadas)) {
+            foreach ($relacionadas as $k => $v) {
+                $v = (array) $v;
+                $v = [
+                    "@type"                => "ImageObject",
+                    "description"          => trim($v['titulo_alt']),
+                    "height"               => 418,
+                    "representativeOfPage" => true,
+                    "url"                  => CDN_ELEMENTOS . sprintf($v['img']['path'], '696x418'),
+                    "width"                => 696,
+                ];
+
+                $v2 = [
+                    "@type"    => "ListItem",
+                    "position" => $k + 1,
+                    "url"      => base_url($v['url']),
+                ];
+                $list[]  = $v2;
+                $image[] = $v;
+
+                unset($v);
+            }
+        }
+
+        $keywords = [];
+        foreach ($nota['tags'] as $k => $v) {
+            $v          = (array) $v;
+            $keywords[] = $v['name'];
+            unset($v);
+        }
+
+        $out = [
+            "@context"         => "http://schema.org",
+            "@type"            => "NewsArticle",
+            "articleBody"      => trim(strip_tags($nota['contenido'])),
+            "author"           => [
+                "@type" => "Person",
+                "name"  => "América Noticias",
+            ],
+            "dateModified"     => date('Y-m-d\TH:i:sP', $nota['pubtime']),
+            "datePublished"    => date('Y-m-d\TH:i:sP', $nota['pubtime']),
+            "description"      => trim($nota['bajada_alt']),
+            "headline"         => trim($nota['titulo_alt']),
+            "image"            => $image,
+            "keywords"         => $keywords,
+            "mainEntityOfPage" => [
+                "@id"   => base_url($nota['url']),
+                "@type" => "WebPage",
+            ],
+            "publisher"        => [
+                "@type" => "Organization",
+                "logo"  => [
+                    "@type"  => "ImageObject",
+                    "height" => 60,
+                    "url"    => URL_ESTATICOS . 'f/assets/deportes/img/default.jpg?v2',
+                    "width"  => 316,
+                ],
+                "name"  => "América Noticias",
+            ],
+            "video"            => [],
+        ];
+
+        $out2 = [
+            "@context"        => "https://schema.org",
+            "@type"           => "ItemList",
+            "itemListElement" => $list,
+        ];
+
+        return ['nota' => json_encode($out), 'list' => json_encode($out2)];
+    }
+
     public function limpiarCache($key = '')
     {
         $key = empty($this->cache_key) ? $key : $this->cache_key;
@@ -245,6 +354,11 @@ class Core
     public function menuNav($key)
     {
         return $this->getCacheApi($key, CACHE_MENU);
+    }
+
+    public function minisitio($key = '')
+    {
+        return $this->getCacheApi($key, CACHE_MINISITIO);
     }
 
     public function mongodb()
@@ -370,6 +484,11 @@ class Core
     public function seo($key = 'home')
     {
         return $this->getCacheApi($key, CACHE_SEO);
+    }
+
+    public function struct($key = '')
+    {
+        return $this->getCacheApi($key, CACHE_STRUCT);
     }
 
     public function vinculos($key = '')
