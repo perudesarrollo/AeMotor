@@ -148,24 +148,24 @@ class Core
         return $out;
     }
 
-    public function dataLayer($seo = '')
+    public function dataLayer($seo = '', $data = [])
     {
         $seo = (array) $seo;
         if (!isset($seo['titulo'])) {return false;}
         $out = [
             "window"    => [
                 "title"       => $seo['titulo'],
-                "url"         => base_url($this->uri->uri_string()),
+                "url"         => @$data['uri_string'],
                 "description" => isset($seo['meta_description']) ? $seo['meta_description'] : null,
                 "keywords"    => isset($seo['meta_keywords']) ? $seo['meta_keywords'] : null,
                 "pub_time"    => date("Y-m-d H:i:s"),
             ],
             "referrers" => [
-                "referrer_url"    => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : base_url(),
+                "referrer_url"    => isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : null,
                 "primaryReferrer" => null,
                 "subReferrer"     => null,
-                "browser"         => $this->agent->browser(),
-                "device"          => ($this->agent->is_mobile()) ? 'Movil' : 'Desktop',
+                "browser"         => @$data['browser'],
+                "device"          => @$data['device'],
             ],
             "actions"   => [],
             "user"      => [],
@@ -176,7 +176,6 @@ class Core
             ],
         ];
         $json = @json_encode($out);
-
         return $json;
     }
 
