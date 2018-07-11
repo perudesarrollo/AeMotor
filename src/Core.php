@@ -11,6 +11,8 @@ class Core
 
     public $twig;
 
+    public $limpiar_cache;
+
     protected $config;
 
     public function __construct($cnf = [])
@@ -345,7 +347,7 @@ class Core
     public function limpiarCache($key = '')
     {
         $key = empty($this->cache_key) ? $key : $this->cache_key;
-        if (!empty($key)) {
+        if ($this->limpiar_cache) {
             $this->cache->delete($key);
         }
     }
