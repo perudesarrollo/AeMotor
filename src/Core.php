@@ -48,41 +48,49 @@ class Core
             'skin'                  => [
                 'div'    => !empty($seccion['div_skin']) ? $seccion['div_skin'] : null,
                 'codigo' => sprintf(ADS_SLOT, $div_nombre, 'Skin', @$size['skin'], @$seccion['div_skin']),
+                'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'Skin'),
                 'estado' => !empty($seccion['div_skin']) ? true : false,
             ],
             'top'                   => [
                 'div'    => !empty($seccion['div_top_banner']) ? $seccion['div_top_banner'] : null,
                 'codigo' => sprintf(ADS_SLOT, $div_nombre, 'TopBanner', @$size['top'], @$seccion['div_top_banner']),
+                'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'TopBanner'),
                 'estado' => !empty($seccion['div_top_banner']) ? true : false,
             ],
             'footer'                => [
                 'div'    => !empty($seccion['div_footer']) ? $seccion['div_footer'] : null,
                 'codigo' => sprintf(ADS_SLOT, $div_nombre, 'Footer', @$size['footer'], @$seccion['div_footer']),
+                'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'Footer'),
                 'estado' => !empty($seccion['div_footer']) ? true : false,
             ],
             'right0'                => [
                 'div'    => (!empty($seccion['div_right_0']) ? $seccion['div_right_0'] : null),
                 'codigo' => sprintf(ADS_SLOT, $div_nombre, 'Right0', @$size['right0'], @$seccion['div_right_0']),
+                'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'Right0'),
                 'estado' => !empty($seccion['div_right_0']) ? true : false,
             ],
             'right1'                => [
                 'div'    => (!empty($seccion['div_right_1']) ? $seccion['div_right_1'] : null),
                 'codigo' => sprintf(ADS_SLOT, $div_nombre, 'Right1', @$size['right1'], @$seccion['div_right_1']),
+                'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'Right1'),
                 'estado' => !empty($seccion['div_right_1']) ? true : false,
             ],
             'googleIma'             => [
                 'div'    => (!empty($seccion['pre_roll']) ? $seccion['pre_roll'] : null),
                 'codigo' => null,
+                'nombre' => '',
                 'estado' => ($no_mostrar_googleIma) ? false : true,
             ],
             'movil_middle_banner_1' => [
                 'div'    => !empty($seccion['div_middle_banner']) ? $seccion['div_middle_banner'] : null,
                 'codigo' => sprintf(ADS_SLOT, $div_nombre, 'MiddleBanner', @$size['movil_middle_banner_1'], @$seccion['div_middle_banner']),
+                'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'MiddleBanner'),
                 'estado' => !empty($seccion['div_middle_banner']) ? true : false,
             ],
             'movil_middle_banner_2' => [
                 'div'    => !empty($seccion['div_middle_banner1']) ? $seccion['div_middle_banner1'] : null,
                 'codigo' => sprintf(ADS_SLOT, $div_nombre, 'MiddleBanner1', @$size['movil_middle_banner_1'], @$seccion['div_middle_banner1']),
+                'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'MiddleBanner1'),
                 'estado' => !empty($seccion['div_middle_banner1']) ? true : false,
             ],
         ];
