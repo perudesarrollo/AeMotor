@@ -16,6 +16,7 @@ class Masleido
 
     public function set($nid = 0, $seccion = '', $pubtime = '', $style_e = '')
     {
+        $tipo = false;
         if (GALERIA == $style_e) {
             $tipo = 'fotos';
         } else if (VIDEO == $style_e) {
