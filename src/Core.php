@@ -81,17 +81,23 @@ class Core
                 'nombre' => '',
                 'estado' => ($no_mostrar_googleIma) ? false : true,
             ],
-            'movil_middle_banner_1' => [
+            'middle'                => [
                 'div'    => !empty($seccion['div_middle_banner']) ? $seccion['div_middle_banner'] : null,
-                'codigo' => sprintf(ADS_SLOT, $div_nombre, 'MiddleBanner', @$size['movil_middle_banner_1'], @$seccion['div_middle_banner']),
+                'codigo' => sprintf(ADS_SLOT, $div_nombre, 'MiddleBanner', @$size['middle'], @$seccion['div_middle_banner']),
                 'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'MiddleBanner'),
                 'estado' => !empty($seccion['div_middle_banner']) ? true : false,
             ],
+            'movil_middle_banner_1' => [
+                'div'    => !empty($seccion['movil_middle_banner_1']) ? $seccion['movil_middle_banner_1'] : null,
+                'codigo' => sprintf(ADS_SLOT, $div_nombre, 'MiddleBanner', @$size['movil_middle_banner_1'], @$seccion['movil_middle_banner_1']),
+                'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'MiddleBanner'),
+                'estado' => !empty($seccion['movil_middle_banner_1']) ? true : false,
+            ],
             'movil_middle_banner_2' => [
-                'div'    => !empty($seccion['div_middle_banner1']) ? $seccion['div_middle_banner1'] : null,
-                'codigo' => sprintf(ADS_SLOT, $div_nombre, 'MiddleBanner1', @$size['movil_middle_banner_1'], @$seccion['div_middle_banner1']),
+                'div'    => !empty($seccion['movil_middle_banner_2']) ? $seccion['movil_middle_banner_2'] : null,
+                'codigo' => sprintf(ADS_SLOT, $div_nombre, 'MiddleBanner1', @$size['movil_middle_banner_2'], @$seccion['movil_middle_banner_2']),
                 'nombre' => sprintf(ADS_SLOT_NOMBRE, $div_nombre, 'MiddleBanner1'),
-                'estado' => !empty($seccion['div_middle_banner1']) ? true : false,
+                'estado' => !empty($seccion['movil_middle_banner_2']) ? true : false,
             ],
         ];
 
@@ -126,6 +132,7 @@ class Core
                 'right1'    => [],
                 'bidder'    => [],
                 'googleIma' => [],
+                'middle'    => [],
             ],
             'movil'      => [
                 'top'                   => [],
@@ -144,6 +151,7 @@ class Core
                 'bidder'                => [],
                 'bidder_mobil'          => [],
                 'googleIma'             => [],
+                'middle'                => [],
                 'movil_middle_banner_1' => [],
                 'movil_middle_banner_2' => [],
             ],
